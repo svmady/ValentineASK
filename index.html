@@ -12,7 +12,7 @@
   <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-  <!-- Google Font -->
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
   <!-- Styles -->
@@ -31,7 +31,7 @@
         id="imageDisplay"
         src="./images/image1.gif"
         alt="Cute kitten"
-        class="rounded-xl h-[300px] object-cover shadow-lg"
+        class="rounded-xl h-[300px] object-cover shadow-lg transition-transform duration-500"
       />
 
       <h1
@@ -42,7 +42,7 @@
         Will you be my Valentine, <span id="name" class="text-pink-600">?</span>
       </h1>
 
-      <div id="responseButtons" class="flex gap-4 pt-5 items-center">
+      <div id="responseButtons" class="flex gap-4 pt-5 items-center relative">
         <button
           id="yesButton"
           class="bounce rounded-full text-xl font-bold px-6 py-3

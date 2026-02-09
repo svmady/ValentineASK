@@ -6,7 +6,7 @@ const responseButtons = document.getElementById("responseButtons");
 const loveMessage = document.getElementById("loveMessage");
 const yesSound = document.getElementById("yesSound");
 
-// Personalize name
+// Name from URL
 const params = new URLSearchParams(window.location.search);
 const name = params.get("name");
 if (name) document.getElementById("name").textContent = name;
@@ -23,6 +23,9 @@ const IMAGES = [
 ];
 
 let noCount = 0;
+let isMoving = false;
+let dodgeCount = 0;
+const MAX_DODGES_MOBILE = 3;
 
 // Floating hearts
 setInterval(() => {
@@ -36,8 +39,9 @@ setInterval(() => {
   setTimeout(() => heart.remove(), 10000);
 }, 500);
 
-// Cursor sparkles
+// Cursor sparkles (desktop only)
 document.addEventListener("mousemove", (e) => {
+  if (isMobile()) return;
   const sparkle = document.createElement("div");
   sparkle.className = "sparkle";
   sparkle.style.left = e.clientX + "px";
@@ -46,16 +50,44 @@ document.addEventListener("mousemove", (e) => {
   setTimeout(() => sparkle.remove(), 600);
 });
 
-// No button dodge
+// Desktop hover dodge
 noButton.addEventListener("mouseenter", () => {
-  const x = Math.random() * 200 - 100;
-  const y = Math.random() * 200 - 100;
-  noButton.style.transform = `translate(${x}px, ${y}px)`;
+  if (isMobile() || isMoving) return;
+  moveNoButton();
 });
 
-// No click
+// Mobile tap dodge
+noButton.addEventListener("touchstart", (e) => {
+  if (isMoving) return;
+  e.preventDefault();
+
+  if (dodgeCount >= MAX_DODGES_MOBILE) return;
+  dodgeCount++;
+
+  moveNoButton();
+});
+
+function moveNoButton() {
+  isMoving = true;
+
+  const x = Math.random() * 160 - 80;
+  const y = Math.random() * 160 - 80;
+
+  noButton.style.transform = `translate(${x}px, ${y}px)`;
+
+  setTimeout(() => {
+    isMoving = false;
+  }, 300);
+}
+
+function isMobile() {
+  return window.matchMedia("(hover: none)").matches;
+}
+
+// NO click logic
 noButton.addEventListener("click", () => {
   noCount++;
+
   if (noCount < IMAGES.length) {
     imageDisplay.src = "./images/" + IMAGES[noCount];
   } else {
@@ -63,10 +95,13 @@ noButton.addEventListener("click", () => {
   }
 });
 
-// Yes click
+// YES click
 yesButton.addEventListener("click", () => {
   yesSound.play();
+
   imageDisplay.src = "./images/image7.gif";
+  imageDisplay.classList.add("scale-110");
+
   valentineQuestion.textContent = "Yayyy!! 💖";
   responseButtons.style.display = "none";
 

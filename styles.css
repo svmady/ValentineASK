@@ -34,7 +34,7 @@
   to { transform: translateY(-110vh); opacity: 0; }
 }
 
-/* Heartbeat */
+/* Heartbeat animation */
 .heartbeat {
   animation: heartbeat 1.5s infinite;
 }
@@ -47,7 +47,7 @@
   100% { transform: scale(1); }
 }
 
-/* Sparkles */
+/* Cursor sparkles */
 .sparkle {
   position: fixed;
   width: 8px;
@@ -60,4 +60,10 @@
 
 @keyframes sparkleFade {
   to { transform: scale(2); opacity: 0; }
+}
+
+/* NO button mobile fix */
+#noButton {
+  transition: transform 0.3s ease;
+  touch-action: manipulation;
 }
