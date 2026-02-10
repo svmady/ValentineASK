@@ -41,8 +41,7 @@ const moveNoButton = () => {
   noButton.style.top = `${y}px`;
 };
 
-noButton.addEventListener("mouseenter", moveNoButton);
-noButton.addEventListener("touchstart", (e) => {
+noButton.addEventListener("click", (e) => {
   e.preventDefault();
   moveNoButton();
 });
