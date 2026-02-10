@@ -2,10 +2,10 @@
 const VALENTINE_CONFIG = {
   nameFromUrl: true, // Use ?name=YourName in URL
   images: {
-    initial: "./images/image1.jpeg",
+    initial: "./images/Image1.jpeg",
     noResponses: [
-      "./images/image2.jpeg",
-      "./images/image3.jpeg"],
+      "./images/Image2.jpeg",
+      "./images/Image3.jpeg"],
     accepted: "./images/image3.gif"
   },
   messages: {
