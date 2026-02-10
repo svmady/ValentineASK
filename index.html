@@ -3,70 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#ff6baeff" />
-  <title>Valentine 💘</title>
-
-  <!-- Tailwind -->
+  <title>Be My Valentine? 💘</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
+<body class="bg-slate-50 overflow-hidden font-['Inter']">
 
-<body class="gradient-background">
+  <div class="mesh-gradient"></div>
 
-  <!-- Floating hearts -->
-  <div id="floating-hearts"></div>
+  <main class="relative z-10 flex items-center justify-center min-h-screen p-4">
+    <div id="main-card" class="w-full max-w-md bg-white/80 backdrop-blur-xl border border-white/40 p-8 rounded-[2.5rem] shadow-2xl shadow-pink-200/50 transition-all duration-700">
+      
+      <div class="relative overflow-hidden rounded-3xl aspect-square mb-8 shadow-inner bg-pink-50">
+        <img id="imageDisplay" src="" alt="Valentine Illustration" class="w-full h-full object-cover transition-all duration-500 scale-100" />
+      </div>
 
-  <main class="flex items-center justify-center h-screen relative z-10">
-    <section class="flex flex-col items-center p-6 bg-white/60 backdrop-blur-md rounded-2xl shadow-xl border border-pink-200">
+      <div class="text-center space-y-4">
+        <h1 id="valentineQuestion" class="text-4xl font-bold tracking-tight text-slate-800 font-['Outfit']">
+          Will you be my Valentine, <span id="userName" class="text-pink-500">?</span>
+        </h1>
+        <p id="loveMessage" class="text-slate-600 text-lg leading-relaxed h-0 overflow-hidden opacity-0 transition-all duration-500"></p>
+      </div>
 
-      <img
-        id="imageDisplay"
-        src="./images/image1.gif"
-        alt="Cute kitten"
-        class="rounded-xl h-[300px] object-cover shadow-lg transition-transform duration-500"
-      />
-
-      <h1
-        id="valentineQuestion"
-        class="heartbeat text-4xl md:text-5xl text-[#bd1e59] my-6 text-center"
-        style="font-family: 'Pacifico', cursive;"
-      >
-        Will you be my Valentine, <span id="name" class="text-pink-600">?</span>
-      </h1>
-
-      <div id="responseButtons" class="flex gap-4 pt-5 items-center relative">
-        <button
-          id="yesButton"
-          class="bounce rounded-full text-xl font-bold px-6 py-3
-          bg-gradient-to-r from-green-400 to-emerald-500 text-white
-          shadow-lg shadow-green-300/50 hover:scale-110 transition-all"
-        >
-          Yes
+      <div id="responseButtons" class="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center relative min-h-[60px]">
+        <button id="yesButton" class="w-full sm:w-auto px-10 py-4 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-2xl shadow-lg shadow-pink-300 transition-all hover:scale-105 active:scale-95">
+          Yes!
         </button>
-
-        <button
-          id="noButton"
-          class="rounded-full text-lg px-5 py-2
-          bg-red-400 text-white opacity-80 hover:opacity-100 transition-all"
-        >
+        <button id="noButton" class="w-full sm:w-auto px-8 py-4 bg-white text-slate-500 font-semibold rounded-2xl border border-slate-200 hover:bg-slate-50 transition-all">
           No
         </button>
       </div>
-
-      <p id="loveMessage" class="text-xl text-pink-700 mt-4 text-center hidden"></p>
-
-    </section>
+    </div>
   </main>
-
-  <audio id="yesSound" src="./sounds/love.mp3"></audio>
 
   <script src="script.js"></script>
 </body>
